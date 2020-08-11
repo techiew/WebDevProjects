@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>
+			Min kule bildekarusell
+		</title>
+		<link rel="stylesheet" href="mystyle.css"/>
+	</head>
+	<body>
+		<div id="container">
+			<input type="radio" id="bilde1" class="bildecontainer" name="bildecontainer" hidden="true" checked> <!-- Usynelig "knapp" som har ansvar for å velge bildet -->
+			<div class="bilde">																					<!-- med ren css så må man bruke ghetto "knapper" -->
+				<img src="bilde1.jpg"/>
+			</div>
+			<input type="radio" id="bilde2" class="bildecontainer" name="bildecontainer" hidden="true">
+			<div class="bilde">
+				<img src="bilde2.jpg"/>
+			</div>
+			<input type="radio" id="bilde3" class="bildecontainer" name="bildecontainer" hidden="true">
+			<div class="bilde">
+				<img src="bilde3.jpg"/>
+			</div>
+			<label for="bilde3" class="pil prev control-1">&#10094;</label> <!-- Piler som er aktive for første bildet -->
+			<label for="bilde2" class="pil next control-1">&#10095; </label>
+			
+			<label for="bilde1" class="pil prev control-2">&#10094;</label> <!-- Piler som er aktive for andre bildet -->
+			<label for="bilde3" class="pil next control-2">&#10095;</label>
+			
+			<label for="bilde2" class="pil prev control-3">&#10094;</label> <!-- Piler som er aktive for tredje bildet -->
+			<label for="bilde1" class="pil next control-3">&#10095;</label>
+			
+			<div id="karusellnavbar"> <!-- Container for knappene -->
+				<label for="bilde1" class="knapp" id="knapp1">&#149;</label> <!-- Disse labelene gjør jobben for radioknappene over bare at disse labelene kan man endre designet på -->
+				<label for="bilde2" class="knapp">&#149;</label>
+				<label for="bilde3" class="knapp">&#149;</label>
+			</div>
+		</div>
+	</body>
+</html>
+<!-- Kilde: http://codepen.io/SitePoint/pen/MyPVdK -->

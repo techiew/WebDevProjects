@@ -1,0 +1,52 @@
+html, body
+{
+	height: 100%;
+	width: 100%;
+}
+
+#container
+{
+	width: 318px;
+	height: 318px;
+	display: inline-block;
+	border-style: solid; 
+	border-color: #820E17;
+}
+
+#container > div  /* beholderen for tallene */
+{
+	display: inline-block;
+	margin: 1px 1px 1px 1px;
+	border-style: solid;
+	border-color: #820E17;
+}
+
+#container  > div > p /* selve tallene */
+{
+	color: black;
+	font-size: 65px;
+	margin: 8px 8px 8px 8px; /* 8% */
+	padding: 2px 23px 2px 23px; /* prosenter: 1% 25% 1% 25% */
+}
+
+#container > div:nth-child(odd) > p /* velger alle oddetall av p */
+{
+	background-color: #88CCCB
+}
+
+#container > div:nth-child(even) > p /* velger alle partall av p */
+{
+	background-color: #CB88CD;
+}
+
+#container > div > #empty
+{
+	color: white;
+	background-color: white;
+}
+
+/*
+#CB88CD = rosa
+#88CCCB = grønn
+#820E17 = brun til ramme
+*/

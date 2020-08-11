@@ -1,0 +1,126 @@
+<html>
+
+	<head>
+	
+		<title>OAD2000V Eksamen</title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<script src="funksjoner.js"></script>
+		
+	</head>
+	
+	<body>
+		
+	<div class="content">
+	
+		<header>
+	
+			<h1>Avansert forklaring av AbstractTableModel</h1>
+		
+		</header>
+		
+		<a class="goback" href="index.html">Gå tilbake til forsiden</a>
+				
+		<div class="content_text">
+
+			<h3>Hva er AbstractTableModel?</h3>
+			AbstractTableModel <b>(ATM)</b> er en måte for oss å lage en skreddersydd modell for en <b>JTable</b>, JTable er en klasse som representerer en tabell som har kolonner med navn og verdier til disse, altså en helt vanlig tabell. Vi kan bruke en JTable i et Java GUI for å vise tabellen. ATM lar oss definere våre egne kolonner og legge verdier i disse kolonnene som vi senere kan bruke for en JTable. Den gir oss også mulighet til å endre på hvordan tabellen vår kommuniserer med Java.
+			<br><br>
+			AbstractTableModel er en <b>abstrakt</b> klasse, den er abstrakt fordi den implementerer <b>TableModel</b> (som er et interface), men den definerer ikke alle metodene til dette interfacet. Grunnen til dette er at den vil tvinge brukerene av ATM til å lage sine egne definisjoner av de metodene som mangler, gjør du ikke dette, så vil programmet gi deg en error, på grunn av krav fra interfacet.
+			
+			<h3>Hvordan starter jeg å bruke dette?</h3>
+			<div class="img_container">
+				<img src="bilder/ClassDiagramSimple.svg"/>
+			</div>
+			Her ser du 3 klasser som vi skal gå ut i fra. Noen av disse klassene har vi nevnt fra før av: <b>TableModel, AbstractTableModel og ConcreteTableModel.</b><br><br>
+			<b>TableModel</b> er interfacet som bestemmer hva slags funksjoner vi må implementere for at vi skal ha en fungerende TableModel klasse som kan brukes i en JTable. 
+			<b>AbstractTableModel</b> inneholder definisjoner for en god del av funksjonene som kreves av TableModel, untatt noen som må defineres selv av utvikleren.
+			<b>ConcreteTableModel</b> er en ny klasse, som vi som utvikler må lage selv, denne klassen arver fra AbstractTableModel. Vi skriver mer om hva du må ha i denne klassen senere.
+			
+			<h3>Hvordan henger alt dette sammen?</h3>
+			<div class="img_container">
+				<img src="bilder/ClassDiagram.svg"/>
+			</div>
+			Vår første diagramtype er et klassediagram. Klassediagram er den mest grunnlegende diagramtypen i UML og
+			har i oppgave av å vise klasser, deres forhold, klassefelt og metoder. Med å se på klassediagrammet så kan
+			man enkelt få en klar oversikt på hvordan klassene i programmet er satt opp. Diagrammet dekker alle relevante 
+			klasser, inkludert main metoden og importerte klasser som swing klassene.
+			<div class="img_container">
+				<img src="bilder/SequenceDiagram.svg"/>
+			</div>
+			Sekvensdiagrammet viser interaksjonene mellom objektene i en sekvensiell rekkefølge. Det betyr at den første 
+			interaksjonen som foregår i programmet er den øverste pilen som viser interaksjonen mellom bruker og programmet.
+			Når brukeren starter programmet, så vil main metoden instansiere GUI. Deretter vil GUI klassen instansiere de
+			neste klassene osv. Den gir en god forståelse av det som skjer trinnvis i programmet som kan hjelpe med å 
+			avdekke feil med logikk eller syntax (for eksempel at ConcreteTableModel prøver å fylle JTable med data
+			før JTable er instansiert). 
+			<div class="img_container">
+				<img src="bilder/ObjectDiagram.svg"/>
+			</div>
+			Objektdiagrammet over viser alle de aktive objektene i programmet. Diagrammet gir oss oversikt på hvilke
+			klasser som faktisk blir instansiert, som er nyttig fordi klassediagrammet inneholder flere uinstansierbare 
+			klasser som interface klassen TableModel og den abstrakte AbstractTableModel. Vi kan også se hvilke variabler
+			som objektene inneholder. Merk at ConcreteTableModel inneholder en "data" variabel som er den lokale datalagringen
+			vi benytter oss av. Hvilke kolonner og verdier ConcreteTableModel inneholder blir lett synlig med et objektdiagram.
+			<div class="img_container">
+				<img src="bilder/PackageDiagram.svg"/>
+			</div>
+			Og her er et pakkediagram som viser pakkestrukturen som eksempelprogrammet bruker. Vi tar i bruk 3 pakker i programmet vårt, <b>main</b>, som inneholder main klassen vår og entry point, <b>gui</b> pakken, som inneholder klasser relatert til grensesnittet, <b>table</b>, som inneholder klasser relatert til vår tilpassede tabell, og deler av <b>swing</b> pakken, som importeres fra det offisielle Java biblioteket. <br> <br>
+			
+			UML inneholder en del andre diagramtyper. Disse diagramtypene er spesialisert for forskjellige bruk, som for
+			eksempel utplasseringsdiagrammer som viser hvordan fysiske deler og komponenter står, som en database.
+			AbstractTableModel og eksempelprogrammet til den er et simpelt, lite program som ikke tilegner seg bredt bruk av
+			forskjellige UML diagrammer. Diagrammene som er inkludert i teksten følte vi var viktig for å få fram forståelse
+			og klarhet i koden vår. 
+			
+			<h3>Hvordan lager jeg en tilpasset tabell?</h3>
+			Først så starter du med å lage en subklasse av AbstractTableModel, vi kan kalle den for ConcreteTableModel <b>(CTM)</b>, fordi den er et konkret, ferdig objekt, i motsetning til vår <b>abstrakte</b> superklasse. Vår CTM inneholder de fleste funksjonene vi trenger fordi vi arver fra ATM, men vi må selv definere de 3 funksjonene som mangler. Det er viktig å huske at det er ikke ATM som gir oss kravet til å implementere alle funksjonene, men istedet så er det interfacet som ATM selv implementerer, altså <b>TableModel</b>, som gir oss dette kravet. De 3 manglende funksjonene er:
+			<p class="specialtext">
+				public int getRowCount(); <br>
+				public int getColumnCount(); <br>
+				public Object getValueAt(int row, int column);
+			</p>
+			Grunnen til at vi må lage disse selv er fordi at JTable klassen vi må bruke, må snakke med vår CTM gjennom disse funksjonene for å lage en ordentlig tabell. I <b>getRowCount()</b> må vi definere en måte å hente antall rader ut av tabellen, i <b>getColumnCount()</b> må vi gjøre det samme, bare for kolonner. I <b>getValueAt()</b> må vi hente ut selve verdien i en gitt rad og kolonne. Mer om dette vises i kodeeksempelet på bunnen av siden.
+			Etter man har laget en ordentlig TableModel, altså klassen CTM som vi lagde, så gir man denne til det JTable objektet man vil bruke.
+			
+			<h3>MÅ jeg lage min egen TableModel?</h3>
+			Nei, du trenger ikke lage din egen TableModel, klassen <b>DefaultTableModel</b> blir brukt hvis du ikke gir JTable din egen TableModel. DefaultTableModel inneholder alle de nødvendige metodene for å ha en enkel fungerende tabell. Men hvis du vil endre på noe i tabellen din, så må du lage en tilpasset TableModel.
+			
+			<h3>Hvor kommer dataen som tabellen inneholder fra?</h3>
+			For å legge informasjonen inn i tabellen, så må informasjonen være lagret et sted. I vårt tilfelle så har vi
+			bestemt oss for å lagre dataen i en dobbel Object array kalt for "data". Data arrayet lagrer data i en tabellstruktur
+			der data[0][0] vil være det første elementet i tabellen, som i vårt eksempel blir "Marius". Det blir lettere å forstå
+			hvordan den lokale lagringstrukturen fungerer hvis du tenker på det som data[rader][kolonner]. 
+			Det er også mulig å ha andre kilder av data som tabellen utnytter. En database tilkobling eller XML dokument
+			fungerer like fint, så lenge du endrer koden til å støtte det. Lokale datalageret vi bruker kalles for cache
+			og er en simpel, lett forståelig måte å bruke AbstractTableModel. 
+			
+			<h3>Hva slags metoder er det muligens praktisk å endre på?</h3>
+			Tabellen din vil fungere fint så lenge du definerer getRowCount(), getColumnCount() og getValueAt(). Men hvis du vil endre på ting som kolonnenavn, forskjellige grafiske ting eller hvordan tabellen din kommuniserer gjennom metodene sine, så kan du overskrive andre i AbstractTableModel metoder også. Et eksempel på en av disse metodene er <b>getColumnName()</b>, som gir oss navnet i form av en string fra en gitt kolonne i tabellen. Uten å overskrive denne, så vil kolonnene i tabellen din bli gitt standard navn av Java. Funksjonen vises i kodeeksempelet under. Det er viktig å nevne at JTable objektet vi bruker må ha en <b>JScrollPane</b> for at kolonnenavn skal vises grafisk.
+			
+			<h3>Kode eksempel</h3>
+			<b>Main.java</b>
+			<div class="img_container">
+				<img src="bilder/kode_main.svg"/>
+			</div>
+			<b>GUI.java</b>
+			<div class="img_container">
+				<img src="bilder/kode_GUI.svg"/>
+			</div>
+			<b>ConcreteTableModel.java</b>
+			<div class="img_container">
+				<img src="bilder/kode_ConcreteTableModel.svg"/>
+			</div>
+			<b>Kjørende program</b>
+			<div class="img_container">
+				<img src="bilder/eksempelprogram.svg"/>
+			</div>
+
+		</div>
+		
+	</div>
+		
+	</body>
+	
+</html>
+	

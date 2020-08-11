@@ -1,0 +1,99 @@
+html, body
+{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: verdana;
+	background-color: #015281;
+}
+
+#container /* container for alt, strekkes ut på hele siden i bredde og høyde */
+{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	overflow: hidden; /* gjemmer alt innhold som på en eller annen måte kan stikke ut av nettsiden,
+						på denne måten så vil nettsiden alltid være samme størrelse */
+}
+
+.bilde /* container for bildene, bestemmer hvor bildet skal ligge */
+{
+	position: absolute; /* position: absolute lar bildene ligge oppå hverandre uten at de dytter hverandre til siden eller opp og ned */
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	top: 1%;
+	opacity: 0; /* den er helt gjennomsiktig, alle bildene utenom det bildet som skal vises er gjennomsiktige */
+	transition: opacity 0.6s ease-out; /* hver gang opacity blir endret, så vil den gjøre en "fade out" eller "fade in" animasjon */
+}
+
+img {
+	width: auto;
+	height: 100%;
+}
+
+.bildecontainer:checked + .bilde /* når en bildecontainer blir aktivert, så vil bildet som ligger ved siden av vises */
+{
+	opacity: 100;
+}
+
+#karusellnavbar /* det som inneholder alle navigasjons knappene på bunnen av siden og som viser hvilket bilde man ser på */
+{
+	position: absolute;
+	width: 100%;
+	height: auto;
+	bottom: 7%;
+}
+
+.knapp /* selve knappene på navigasjonsbaren */
+{
+	font-size: 300%;
+	color: white;
+	cursor: pointer;
+	z-index: 10; /* legger knappene på et høyre lag, slik at det kommer over bildene */
+}
+
+#bilde1:checked ~ #karusellnavbar label:nth-child(1), /* når et bilde vises, så skal knappen på bunnen av siden som tilhører det bildet lyse opp */
+#bilde2:checked ~ #karusellnavbar label:nth-child(2),
+#bilde3:checked ~ #karusellnavbar label:nth-child(3)
+{
+	color: #013D61;
+}
+
+.pil /* pilene på venstre og høyre side av skjermen */
+{
+	position: absolute;
+	font-family: sans-serif;
+	border-style: solid;
+	border-color: #013D61;
+	border-radius: 50%; /* lager en sirkulær kant sånn at hele tingen blir rund */
+	background-color: #013D61;
+	color: white;
+	cursor: pointer; /* endrer musa så det blir litt feedback på om du kan trykke på knappen eller ikke */
+	height: 73px;
+	width: 70px;
+	top: 50%;
+	font-size: 300%;
+	z-index: 10;
+	display: none; /* det finnes mange av disse pilene oppå hverandre, så alle skal være usynelig til å starte med fordi bare de som brukes skal vises */
+}
+
+#bilde1:checked ~ .control-1, /* finner ut hvilke av pilene som skal vises for det bildet som blir brukt */
+#bilde2:checked ~ .control-2,
+#bilde3:checked ~ .control-3
+{
+	display: block; /* endrer de fra display: none; til display: block; slik at pilene vises */
+}
+
+.pil.prev /* velger pilen på venstre side av skjermen og legger den litt vekk fra venstre */
+{
+	left: 5%;
+} 
+
+.pil.next /* gjør det samme, men velger høyre pil og lager litt avstand fra høyre */
+{
+	right: 5%;
+}

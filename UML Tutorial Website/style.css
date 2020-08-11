@@ -1,0 +1,115 @@
+html, body
+{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background-color: #EEEEEE;
+}
+
+h1, h2, h3 
+{
+	line-height: 1.2;
+}
+
+a 
+{
+	text-decoration: none;
+}
+
+img 
+{
+	display: inline;
+	max-width: 600px;
+	width: 100%;
+}
+
+img:hover
+{
+	-webkit-filter: brightness(50%);
+	filter: brightness(50%);
+	cursor: pointer;
+}
+
+.goback
+{
+	text-decoration: underline;
+}
+
+.img_container
+{
+	display: table;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.img_container:hover::before
+{
+	text-align: center;
+	content: "Trykk for å se bildet";
+	position: absolute;
+	display: block;
+	color: white;
+	font-weight: bold;
+	top: 40%;
+	right: 0;
+	left: 0;
+	z-index: 2;
+	pointer-events: none;
+}
+
+.content 
+{
+	overflow-wrap: break-word;
+	margin: 40px auto;
+	max-width: 800px;
+	line-height: 1.6;
+	font-size: 18px;
+	color: #444;
+	padding: 0 10px;
+	margin-bottom: 100px;
+	text-align: center;
+}
+
+.content_text
+{
+	text-align: left;
+}
+
+.button 
+{
+	display: inline-block;
+	background-color: rgb(53, 53, 53);
+	border-style: solid;
+	color: white;
+	padding: 30px 15px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 10px;
+	margin: 20px;
+}
+
+.button:hover 
+{
+	border-color: lightgray;
+}
+
+.button_header 
+{
+	margin: 0;
+	font-size: 24px;
+}
+
+.button_content 
+{
+	margin: 0;
+	padding: 0;
+}
+
+.specialtext 
+{
+	font-size: 16px;
+	margin-left: 24px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	line-height: 2;
+}
