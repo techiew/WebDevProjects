@@ -1,16 +1,30 @@
 html, body
 {
-	height: 100%;
+	height: auto;
 	width: 100%;
+	margin: 0;
+	text-align: center;
+}
+
+body > p {
+	font-size: 130%;
+	max-width: 50%;
+	margin: auto;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+
+#toptext {
+	margin-top: 17%;
 }
 
 #container
 {
-	width: 318px;
-	height: 318px;
-	display: inline-block;
+	width: 316px;
+	height: 309px;
 	border-style: solid; 
 	border-color: #820E17;
+	margin: auto;
 }
 
 #container > div  /* beholderen for tallene */

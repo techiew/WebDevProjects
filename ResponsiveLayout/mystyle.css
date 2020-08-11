@@ -5,6 +5,7 @@ body, html {
     font-family: Verdana;
     font-size: 150%;
     background-color: ghostwhite;
+	padding-top: 1%;
 }
 
 .navbar {
@@ -23,11 +24,11 @@ body, html {
     text-decoration: underline;
     color: darkblue;
     overflow: hidden;
+	margin-left: 1.5%;
 }
 
 .title {
     display: inline;
-    font-family: Impact;
     font-size: 150%;
     padding-left: 5%;
     padding-top: 1%;
@@ -38,13 +39,16 @@ body, html {
     font-size: 50%;
     display: block;
     margin: 0;
-    margin-left: 5%;
+    margin-left: 21%;
+	margin-top: 8%;
+	padding-bottom: 5%;
 }
 
 img {
     display: inline;
     width: 50%;
     height: auto;
+	margin-top: 1%;
 }
 
 .desc {
@@ -55,31 +59,33 @@ img {
 
 .text {
     display: inline-block;
+	max-width: 75%;
 }
 
-@media screen and (max-device-width: 600px), screen and (max-width: 600px) {
-
+@media screen and (max-device-width: 750px), screen and (max-width: 750px) {
     .navbar {
-        float: left;
         display: block;
         margin: 0;
         margin-left: 5%;
-        margin-top: 0.5%;
-        margin-bottom: 0.5%;
-        text-align: left;
+        margin-top: 5%;
+        margin-bottom: 1%;
+        text-align: center;
         width: 100%;
         font-size: 60%;
     }
-    .navbar > a {
-        display: block;
-    }
     .title {
         display: block;
-        width: 100%;
         margin: auto;
-        background-color: lightgray;
-        font-size: 150%;
+		padding-top: 0%;
+		font-size: 125%;
+		width: 100%;
+		padding-left: 0%;
+		text-align: center;
     }
+	.container {
+		margin-left: 10%;
+		margin-top: 18%;
+	}
     .desc {
         display: block;
     }
@@ -89,8 +95,14 @@ img {
     }
     .text {
         display: inline-block;
+		max-width: 95%;
     }
     img {
         display: block;
+		width: 90%;
     }
+	.desc {
+		margin-top: 1%;
+		width: 90%;
+	}
 }
