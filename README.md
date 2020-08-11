@@ -1,4 +1,4 @@
-## https://techiew.github.io/
+## https://techiew.github.io/WebDevProjects
 
 Template is "Multiverse" by HTML5 UP: html5up.net | @ajlkn
 
